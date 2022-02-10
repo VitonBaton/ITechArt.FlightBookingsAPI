@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITechArt.FlightBookingsAPI.Domain", "ITechArt.FlightBookingsAPI.Domain\ITechArt.FlightBookingsAPI.Domain.csproj", "{B293DC16-1C43-4E09-B957-730D2EAEA81D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITechArt.FlightBookingsAPI.Infrastructure", "ITechArt.FlightBookingsAPI.Infrastructure\ITechArt.FlightBookingsAPI.Infrastructure.csproj", "{2D296AE8-293A-426A-BF3E-A2F7FFED5AA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITechArt.FlightBookingsAPI.Web", "ITechArt.FlightBookingsAPI.Web\ITechArt.FlightBookingsAPI.Web.csproj", "{B72357FB-4DF1-4722-ACCD-19550E72A99C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B293DC16-1C43-4E09-B957-730D2EAEA81D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B293DC16-1C43-4E09-B957-730D2EAEA81D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B293DC16-1C43-4E09-B957-730D2EAEA81D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B293DC16-1C43-4E09-B957-730D2EAEA81D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D296AE8-293A-426A-BF3E-A2F7FFED5AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D296AE8-293A-426A-BF3E-A2F7FFED5AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D296AE8-293A-426A-BF3E-A2F7FFED5AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D296AE8-293A-426A-BF3E-A2F7FFED5AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B72357FB-4DF1-4722-ACCD-19550E72A99C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B72357FB-4DF1-4722-ACCD-19550E72A99C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B72357FB-4DF1-4722-ACCD-19550E72A99C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B72357FB-4DF1-4722-ACCD-19550E72A99C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
