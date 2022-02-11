@@ -9,7 +9,7 @@ public class Ticket
     public User? User { get; set; }
     public Guid FlightId { get; set; }
     public Flight? Flight { get; set; }
-    public Guid FlightTicketTypeId { get; set; }
+    public Guid? FlightTicketTypeId { get; set; }
     public FlightTicketType? FlightTicketType { get; set; }
     [Required]
     public DateTime CreatedAt { get; set; }

@@ -10,6 +10,7 @@ public class FlightTicketType
     public Flight? Flight { get; set; }
     public Guid TicketTypeId { get; set; }
     public TicketType? TicketType { get; set; }
+    public List<Ticket>? Tickets { get; set; }
     [Column(TypeName = "decimal(5, 2)")]
     [Required]
     public decimal Price { get; set; }
