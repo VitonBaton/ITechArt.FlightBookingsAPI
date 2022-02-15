@@ -16,7 +16,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ITechArt.FlightBookingsAPI.Domain\ITechArt.FlightBookingsAPI.Domain.csproj" />
-      <ProjectReference Include="..\ITechArt.FlightBookingsAPI.Infrastructure\ITechArt.FlightBookingsAPI.Infrastructure.csproj" />
+      <ProjectReference Include="..\ITechArt.FlightBookingsAPI.Repositories\ITechArt.FlightBookingsAPI.Repositories.csproj" />
+      <ProjectReference Include="..\ITechArt.FlightBookingsAPI.Services\ITechArt.FlightBookingsAPI.Services.csproj" />
     </ItemGroup>
 
 </Project>
