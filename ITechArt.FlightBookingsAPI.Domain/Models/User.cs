@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace ITechArt.FlightBookingsAPI.Domain.Models;
 
-public class User
+public class User : IdentityUser<Guid>
 {
-    public Guid Id { get; set; }
-    public string? Phone { get; set; }
     [Required]
     public DateTime CreatedAt { get; set; }
     [Required]
