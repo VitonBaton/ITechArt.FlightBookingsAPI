@@ -1,11 +1,13 @@
 using System.Text;
 using ITechArt.FlightBookingsAPI.Domain.Models;
 using ITechArt.FlightBookingsAPI.Infrastructure.Contexts;
+using ITechArt.FlightBookingsAPI.Services.Interfaces;
+using ITechArt.FlightBookingsAPI.Services.Services;
+using ITechArt.FlightBookingsAPI.Web.MappingConfigurations;
 using ITechArt.FlightBookingsAPI.Web.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(UsersProfile));
+builder.Services.AddScoped<IUsersService, UsersService>();
+
+builder.Services.Configure<JwtSettingsModel>(builder.Configuration.GetSection("Jwt"));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
