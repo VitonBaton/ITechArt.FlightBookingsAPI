@@ -1,6 +1,7 @@
 using System.Text;
 using ITechArt.FlightBookingsAPI.Domain.Models;
 using ITechArt.FlightBookingsAPI.Infrastructure.Contexts;
+using ITechArt.FlightBookingsAPI.Web.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -55,5 +56,15 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+    await DbInitializer.SeedRoles(roleManager);
+          
+    await DbInitializer.SeedUsers(userManager,
+        app.Configuration["Constants:AdminPass"]);
+}
 
 app.Run();
