@@ -7,4 +7,6 @@ public interface IUsersService
 {
     public Task Register(User user, string password);
     public Task<string> Login(string username, string password, string securityKey, string issuer);
+    public Task UpdateAccount(Guid userId, User userInfo);
+    public Task DeleteAccount(Guid userId);
 }

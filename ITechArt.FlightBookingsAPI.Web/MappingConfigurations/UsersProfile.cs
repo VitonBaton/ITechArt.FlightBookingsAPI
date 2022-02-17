@@ -9,5 +9,6 @@ public class UsersProfile : Profile
     public UsersProfile()
     {
         CreateMap<RegistrationModel, User>();
+        CreateMap<UpdateUserModel, User>();
     }
 }
