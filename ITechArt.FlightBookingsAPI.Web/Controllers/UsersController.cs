@@ -58,4 +58,30 @@ public class UsersController : Controller
         await _usersService.UpdateAccount(UserId, _mapper.Map<User>(userModel));
         return Ok();
     }
+
+    [HttpGet]
+    [Authorize(Roles = "Admin")]
+    public async Task<ActionResult<List<GetUserModel>>> GetAllUsers()
+    {
+        var result =await _usersService.GetAll();
+        return Ok(_mapper.Map<List<GetUserModel>>(result));
+    }
+    
+    [HttpDelete]
+    [Authorize(Roles = "Admin")]
+    [Route("{userId}")]
+    public async Task<ActionResult> DeleteAccount(Guid userId)
+    {
+        await _usersService.DeleteAccount(userId);
+        return Ok();
+    }
+
+    [HttpPatch]
+    [Authorize(Roles = "Admin")]
+    [Route("{userId}")]
+    public async Task<ActionResult> UpdateAccount(Guid userId,[FromBody] UpdateUserModel userModel)
+    {
+        await _usersService.UpdateAccount(userId, _mapper.Map<User>(userModel));
+        return Ok();
+    }
 }

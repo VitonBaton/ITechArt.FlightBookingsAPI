@@ -10,5 +10,6 @@ public class UsersProfile : Profile
     {
         CreateMap<RegistrationModel, User>();
         CreateMap<UpdateUserModel, User>();
+        CreateMap<User, GetUserModel>();
     }
 }

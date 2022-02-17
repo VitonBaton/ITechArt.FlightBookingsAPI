@@ -5,6 +5,7 @@ using ITechArt.FlightBookingsAPI.Domain.Errors;
 using ITechArt.FlightBookingsAPI.Domain.Models;
 using ITechArt.FlightBookingsAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace ITechArt.FlightBookingsAPI.Services.Services;
@@ -99,5 +100,10 @@ public class UsersService : IUsersService
         {
             throw new ServerErrorException("Error while deleting");
         }
+    }
+    
+    public async Task<List<User>> GetAll()
+    {
+        return await _userManager.Users.ToListAsync();
     }
 }
