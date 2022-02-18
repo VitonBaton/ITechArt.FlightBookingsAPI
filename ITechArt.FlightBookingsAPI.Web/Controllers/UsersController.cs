@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using AutoMapper;
+using ITechArt.FlightBookingsAPI.Domain.Constants;
 using ITechArt.FlightBookingsAPI.Domain.Models;
 using ITechArt.FlightBookingsAPI.Services.Interfaces;
 using ITechArt.FlightBookingsAPI.Web.Models;
@@ -44,7 +45,7 @@ public class UsersController : Controller
     }
     
     [HttpDelete]
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = IdentityRoles.UserRole)]
     public async Task<ActionResult> DeleteAccount()
     {
         await _usersService.DeleteAccount(UserId);
@@ -52,7 +53,7 @@ public class UsersController : Controller
     }
 
     [HttpPatch]
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = IdentityRoles.UserRole)]
     public async Task<ActionResult> UpdateAccount([FromBody] UpdateUserModel userModel)
     {
         await _usersService.UpdateAccount(UserId, _mapper.Map<User>(userModel));
@@ -60,7 +61,7 @@ public class UsersController : Controller
     }
 
     [HttpGet]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = IdentityRoles.AdminRole)]
     public async Task<ActionResult<List<GetUserModel>>> GetAllUsers()
     {
         var result =await _usersService.GetAll();
@@ -68,7 +69,7 @@ public class UsersController : Controller
     }
     
     [HttpDelete]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = IdentityRoles.AdminRole)]
     [Route("{userId}")]
     public async Task<ActionResult> DeleteAccount(Guid userId)
     {
@@ -77,7 +78,7 @@ public class UsersController : Controller
     }
 
     [HttpPatch]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = IdentityRoles.AdminRole)]
     [Route("{userId}")]
     public async Task<ActionResult> UpdateAccount(Guid userId,[FromBody] UpdateUserModel userModel)
     {

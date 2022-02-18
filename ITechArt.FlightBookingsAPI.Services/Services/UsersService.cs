@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using ITechArt.FlightBookingsAPI.Domain.Constants;
 using ITechArt.FlightBookingsAPI.Domain.Errors;
 using ITechArt.FlightBookingsAPI.Domain.Models;
 using ITechArt.FlightBookingsAPI.Services.Interfaces;
@@ -12,9 +13,6 @@ namespace ITechArt.FlightBookingsAPI.Services.Services;
 
 public class UsersService : IUsersService
 {
-    private const string UserRole = "User";
-    private const string AdminRole = "Admin";
-
     private readonly UserManager<User> _userManager;
 
     public UsersService(UserManager<User> userManager)
@@ -30,7 +28,7 @@ public class UsersService : IUsersService
             throw new ArgumentException(result.Errors.First().Description);
         }
 
-        result = await _userManager.AddToRoleAsync(user, UserRole);
+        result = await _userManager.AddToRoleAsync(user, IdentityRoles.UserRole);
         if (!result.Succeeded)
         {
             throw new ArgumentException(result.Errors.First().Description);
