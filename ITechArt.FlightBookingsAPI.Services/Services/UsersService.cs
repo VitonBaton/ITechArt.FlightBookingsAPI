@@ -27,13 +27,13 @@ public class UsersService : IUsersService
         var result = await _userManager.CreateAsync(user, password);
         if (!result.Succeeded)
         {
-            throw new BadRequestException(result.Errors.First().Description);
+            throw new ArgumentException(result.Errors.First().Description);
         }
 
         result = await _userManager.AddToRoleAsync(user, UserRole);
         if (!result.Succeeded)
         {
-            throw new BadRequestException(result.Errors.First().Description);
+            throw new ArgumentException(result.Errors.First().Description);
         }
     }
 
@@ -42,7 +42,7 @@ public class UsersService : IUsersService
         var user = await _userManager.FindByNameAsync(username);
         if (user is null || !await _userManager.CheckPasswordAsync(user, password))
         {
-            throw new KeyNotFoundException("Incorrect login/password");
+            throw new ArgumentException("Incorrect login/password");
         }
 
         var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
@@ -72,7 +72,7 @@ public class UsersService : IUsersService
             var result = await _userManager.UpdateAsync(user);
             if (!result.Succeeded)
             {
-                throw new BadRequestException(result.Errors.First().Description);
+                throw new ArgumentException(result.Errors.First().Description);
             }
         }
 
@@ -82,7 +82,7 @@ public class UsersService : IUsersService
             var result = await _userManager.UpdateAsync(user);
             if (!result.Succeeded)
             {
-                throw new BadRequestException(result.Errors.First().Description);
+                throw new ArgumentException(result.Errors.First().Description);
             }
         }
     }
