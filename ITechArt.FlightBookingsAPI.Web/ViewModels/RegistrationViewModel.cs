@@ -1,6 +1,6 @@
 ﻿namespace ITechArt.FlightBookingsAPI.Web.Models;
 
-public class RegistrationModel
+public class RegistrationViewModel
 {
     public string UserName { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;

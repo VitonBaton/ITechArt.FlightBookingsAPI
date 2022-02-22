@@ -8,8 +8,8 @@ public class UsersProfile : Profile
 {
     public UsersProfile()
     {
-        CreateMap<RegistrationModel, User>();
-        CreateMap<UpdateUserModel, User>();
-        CreateMap<User, GetUserModel>();
+        CreateMap<RegistrationViewModel, User>();
+        CreateMap<UserViewModel, User>();
+        CreateMap<User, UserViewModel>();
     }
 }

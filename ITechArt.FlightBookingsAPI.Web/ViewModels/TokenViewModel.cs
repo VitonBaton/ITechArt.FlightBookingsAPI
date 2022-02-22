@@ -1,6 +1,6 @@
 ﻿namespace ITechArt.FlightBookingsAPI.Web.Models;
 
-public class TokenModel
+public class TokenViewModel
 {
     public string Token { get; set; } = string.Empty;
 }
