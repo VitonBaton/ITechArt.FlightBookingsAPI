@@ -1,11 +1,12 @@
 ﻿using ITechArt.FlightBookingsAPI.Domain.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ITechArt.FlightBookingsAPI.Infrastructure.Contexts;
 
-public class FlightBookingsContext : DbContext
+public class FlightBookingsContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
-    public DbSet<User> Users { get; set; }
     public DbSet<Flight> Flights { get; set; }
     public DbSet<Ticket> Tickets { get; set; }
     public DbSet<TicketType> TicketTypes { get; set; }
@@ -26,5 +27,7 @@ public class FlightBookingsContext : DbContext
             .HasOne(t => t.FlightTicketType)
             .WithMany(t => t.Tickets)
             .OnDelete(DeleteBehavior.NoAction);
+        
+        base.OnModelCreating(modelBuilder);
     }
 }
