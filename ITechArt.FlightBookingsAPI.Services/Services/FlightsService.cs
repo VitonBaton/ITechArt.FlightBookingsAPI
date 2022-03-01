@@ -7,7 +7,7 @@ namespace ITechArt.FlightBookingsAPI.Services.Services;
 
 public class FlightsService : IFlightsService
 {
-    private IFlightsRepository _repository;
+    private readonly IFlightsRepository _repository;
 
     public FlightsService(IFlightsRepository repository)
     {
@@ -26,6 +26,7 @@ public class FlightsService : IFlightsService
 
     public async Task<Flight> CreateAsync(Flight flight)
     {
+        flight.CreatedAt = DateTime.Now;
         return await _repository.CreateAsync(flight);
     }
 
