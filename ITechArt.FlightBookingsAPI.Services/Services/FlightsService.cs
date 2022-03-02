@@ -34,14 +34,11 @@ public class FlightsService : IFlightsService
     {
         var updatable = await _repository.GetByIdAsync(id);
 
-        foreach (var property in flight.GetType().GetProperties())
-        {
-            var value = property.GetValue(flight);
-            if (!(value is null || value.Equals(DateTime.MinValue) || value.Equals(Guid.Empty)))
-            {
-                property.SetValue(updatable,value);
-            }
-        }
+        updatable.DeparturePoint = flight.DeparturePoint;
+        updatable.DestinationPoint = flight.DestinationPoint;
+        updatable.StartDate = flight.StartDate;
+        updatable.EndTime = flight.EndTime;
+        
         await _repository.UpdateAsync(updatable);
     }
 
