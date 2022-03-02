@@ -3,7 +3,7 @@ using AutoMapper;
 using ITechArt.FlightBookingsAPI.Domain.Constants;
 using ITechArt.FlightBookingsAPI.Domain.Models;
 using ITechArt.FlightBookingsAPI.Services.Interfaces;
-using ITechArt.FlightBookingsAPI.Web.Models;
+using ITechArt.FlightBookingsAPI.Web.ViewModels;
 using ITechArt.FlightBookingsAPI.Web.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,32 +26,32 @@ public class FlightsController : Controller
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Flight>>> GetAllFlights()
+    public async Task<ActionResult<IEnumerable<FlightViewModel>>> GetAllFlights()
     {
         var result = await _flightsService.GetAllAsync();
-        return Ok(result);
+        return Ok(_mapper.Map<IEnumerable<FlightViewModel>>(result));
     }
 
     [HttpGet]
     [Route("{id:guid}")]
-    public async Task<ActionResult<Flight>> GetFlightById(Guid id)
+    public async Task<ActionResult<FlightViewModel>> GetFlightById(Guid id)
     {
         var result = await _flightsService.GetByIdAsync(id);
-        return Ok(result);
+        return Ok(_mapper.Map<FlightViewModel>(result));
     }
 
     [HttpPost]
-    public async Task<ActionResult<Flight>> CreateFlight(Flight flight)
+    public async Task<ActionResult<FlightViewModel>> CreateFlight(FlightViewModel flight)
     {
-        var result = await _flightsService.CreateAsync(flight);
-        return Ok(result);
+        var result = await _flightsService.CreateAsync(_mapper.Map<Flight>(flight));
+        return Ok(_mapper.Map<FlightViewModel>(result));
     }
 
     [HttpPatch]
     [Route("{id:guid}")]
-    public async Task<ActionResult> UpdateFlight(Guid id, [FromBody] Flight flight)
+    public async Task<ActionResult> UpdateFlight(Guid id, [FromBody] FlightViewModel flight)
     {
-        await _flightsService.UpdateAsync(id, flight);
+        await _flightsService.UpdateAsync(id, _mapper.Map<Flight>(flight));
         return Ok("Flight updated successfully");
     }
 
