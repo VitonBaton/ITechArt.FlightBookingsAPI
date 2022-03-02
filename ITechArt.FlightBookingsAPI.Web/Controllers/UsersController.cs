@@ -3,7 +3,7 @@ using AutoMapper;
 using ITechArt.FlightBookingsAPI.Domain.Constants;
 using ITechArt.FlightBookingsAPI.Domain.Models;
 using ITechArt.FlightBookingsAPI.Services.Interfaces;
-using ITechArt.FlightBookingsAPI.Web.Models;
+using ITechArt.FlightBookingsAPI.Web.ViewModels;
 using ITechArt.FlightBookingsAPI.Web.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
