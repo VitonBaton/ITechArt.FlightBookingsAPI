@@ -26,6 +26,7 @@ public class FlightsController : Controller
     }
 
     [HttpGet]
+    [Authorize(Roles = IdentityRoles.UserRole+"," + IdentityRoles.AdminRole)]
     public async Task<ActionResult<IEnumerable<FlightViewModel>>> GetAllFlights()
     {
         var result = await _flightsService.GetAllAsync();
@@ -34,6 +35,7 @@ public class FlightsController : Controller
 
     [HttpGet]
     [Route("{id:guid}")]
+    [Authorize(Roles = IdentityRoles.UserRole+"," + IdentityRoles.AdminRole)]
     public async Task<ActionResult<FlightViewModel>> GetFlightById(Guid id)
     {
         var result = await _flightsService.GetByIdAsync(id);
@@ -41,6 +43,7 @@ public class FlightsController : Controller
     }
 
     [HttpPost]
+    [Authorize(Roles = IdentityRoles.AdminRole)]
     public async Task<ActionResult<FlightViewModel>> CreateFlight(FlightViewModel flight)
     {
         var result = await _flightsService.CreateAsync(_mapper.Map<Flight>(flight));
@@ -49,6 +52,7 @@ public class FlightsController : Controller
 
     [HttpPatch]
     [Route("{id:guid}")]
+    [Authorize(Roles = IdentityRoles.AdminRole)]
     public async Task<ActionResult> UpdateFlight(Guid id, [FromBody] FlightViewModel flight)
     {
         await _flightsService.UpdateAsync(id, _mapper.Map<Flight>(flight));
@@ -57,6 +61,7 @@ public class FlightsController : Controller
 
     [HttpDelete]
     [Route("{id:guid}")]
+    [Authorize(Roles = IdentityRoles.AdminRole)]
     public async Task<ActionResult> DeleteFlight(Guid id)
     {
         await _flightsService.DeleteAsync(id);
