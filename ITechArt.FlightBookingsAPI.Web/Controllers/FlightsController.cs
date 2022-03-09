@@ -3,6 +3,7 @@ using AutoMapper;
 using ITechArt.FlightBookingsAPI.Domain.Constants;
 using ITechArt.FlightBookingsAPI.Domain.Models;
 using ITechArt.FlightBookingsAPI.Services.Interfaces;
+using ITechArt.FlightBookingsAPI.Web.Constants;
 using ITechArt.FlightBookingsAPI.Web.ViewModels;
 using ITechArt.FlightBookingsAPI.Web.Utils;
 using Microsoft.AspNetCore.Authorization;
@@ -56,7 +57,7 @@ public class FlightsController : Controller
     public async Task<ActionResult> UpdateFlight(Guid id, [FromBody] FlightViewModel flight)
     {
         await _flightsService.UpdateAsync(id, _mapper.Map<Flight>(flight));
-        return Ok("Flight updated successfully");
+        return Ok(MessageConstants.FlightUpdated);
     }
 
     [HttpDelete]
@@ -65,6 +66,6 @@ public class FlightsController : Controller
     public async Task<ActionResult> DeleteFlight(Guid id)
     {
         await _flightsService.DeleteAsync(id);
-        return Ok("Flight deleted successfully");
+        return Ok(MessageConstants.FlightDeleted);
     }
 }
