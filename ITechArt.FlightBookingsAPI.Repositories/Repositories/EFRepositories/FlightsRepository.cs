@@ -39,8 +39,7 @@ public class FlightsRepository : IFlightsRepository
 
     public async Task UpdateAsync(Flight flight)
     {
-        _dbContext.Flights.Attach(flight);
-        _dbContext.Entry(flight).State = EntityState.Modified;
+        _dbContext.Flights.Update(flight);
         await _dbContext.SaveChangesAsync();
     }
 
