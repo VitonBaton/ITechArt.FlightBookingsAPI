@@ -1,4 +1,5 @@
 ﻿using ITechArt.FlightBookingsAPI.Domain.Models;
+using ITechArt.FlightBookingsAPI.Infrastructure.Constants;
 using ITechArt.FlightBookingsAPI.Infrastructure.Contexts;
 using ITechArt.FlightBookingsAPI.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ public class FlightsRepository : IFlightsRepository
         var result = await _dbContext.Flights.AsNoTracking().FirstOrDefaultAsync(flight => flight.Id == id);
         if (result is null)
         {
-            throw new KeyNotFoundException("Flight not found");
+            throw new KeyNotFoundException(MessageConstants.FlightNotFoundError);
         }
         return result;
     }
