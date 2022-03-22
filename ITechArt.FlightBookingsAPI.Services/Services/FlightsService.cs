@@ -30,16 +30,10 @@ public class FlightsService : IFlightsService
         return await _repository.CreateAsync(flight);
     }
 
-    public async Task UpdateAsync(Guid id, Flight flight)
+    public async Task UpdateAsync(Flight flight)
     {
-        var updatable = await _repository.GetByIdAsync(id);
-
-        updatable.DeparturePoint = flight.DeparturePoint;
-        updatable.DestinationPoint = flight.DestinationPoint;
-        updatable.StartDate = flight.StartDate;
-        updatable.EndTime = flight.EndTime;
-        
-        await _repository.UpdateAsync(updatable);
+        var updatable = await _repository.GetByIdAsync(flight.Id);
+        await _repository.UpdateAsync(flight);
     }
 
     public async Task DeleteAsync(Guid id)

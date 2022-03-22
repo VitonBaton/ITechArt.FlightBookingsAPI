@@ -22,7 +22,7 @@ public class FlightsRepository : IFlightsRepository
 
     public async Task<Flight> GetByIdAsync(Guid id)
     {
-        var result = await _dbContext.Flights.FindAsync(id);
+        var result = await _dbContext.Flights.AsNoTracking().FirstOrDefaultAsync(flight => flight.Id == id);
         if (result is null)
         {
             throw new KeyNotFoundException("Flight not found");

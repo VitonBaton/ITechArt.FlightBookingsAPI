@@ -51,12 +51,11 @@ public class FlightsController : Controller
         return Ok(_mapper.Map<FlightViewModel>(result));
     }
 
-    [HttpPatch]
-    [Route("{id:guid}")]
+    [HttpPut]
     [Authorize(Roles = IdentityRoles.AdminRole)]
-    public async Task<ActionResult> UpdateFlight(Guid id, [FromBody] FlightViewModel flight)
+    public async Task<ActionResult> UpdateFlight([FromBody] FlightViewModel flight)
     {
-        await _flightsService.UpdateAsync(id, _mapper.Map<Flight>(flight));
+        await _flightsService.UpdateAsync(_mapper.Map<Flight>(flight));
         return Ok(MessageConstants.FlightUpdated);
     }
 
