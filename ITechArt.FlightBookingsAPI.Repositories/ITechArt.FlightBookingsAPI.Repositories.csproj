@@ -8,11 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Interfaces" />
-      <Folder Include="Repositories\EFRepositories" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\ITechArt.FlightBookingsAPI.Domain\ITechArt.FlightBookingsAPI.Domain.csproj" />
     </ItemGroup>
 

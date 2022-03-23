@@ -4,6 +4,7 @@ using System.Text;
 using ITechArt.FlightBookingsAPI.Domain.Constants;
 using ITechArt.FlightBookingsAPI.Domain.Errors;
 using ITechArt.FlightBookingsAPI.Domain.Models;
+using ITechArt.FlightBookingsAPI.Services.Constants;
 using ITechArt.FlightBookingsAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +41,7 @@ public class UsersService : IUsersService
         var user = await _userManager.FindByNameAsync(username);
         if (user is null || !await _userManager.CheckPasswordAsync(user, password))
         {
-            throw new ArgumentException("Incorrect login/password");
+            throw new ArgumentException(MessageConstants.LoginError);
         }
 
         var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
@@ -90,13 +91,13 @@ public class UsersService : IUsersService
         var user = await _userManager.FindByIdAsync(userId.ToString());
         if (user is null)
         {
-            throw new KeyNotFoundException("User not found");
+            throw new KeyNotFoundException(MessageConstants.UserNotFoundError);
         }
 
         var result = await _userManager.DeleteAsync(user);
         if (!result.Succeeded)
         {
-            throw new ServerErrorException("Error while deleting");
+            throw new ServerErrorException(MessageConstants.DeleteError);
         }
     }
     

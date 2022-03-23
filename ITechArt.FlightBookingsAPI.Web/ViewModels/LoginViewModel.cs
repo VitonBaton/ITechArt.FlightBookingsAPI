@@ -1,4 +1,4 @@
-﻿namespace ITechArt.FlightBookingsAPI.Web.Models;
+﻿namespace ITechArt.FlightBookingsAPI.Web.ViewModels;
 
 public class LoginViewModel
 {

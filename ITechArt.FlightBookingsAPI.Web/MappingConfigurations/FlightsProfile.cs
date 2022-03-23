@@ -4,12 +4,11 @@ using ITechArt.FlightBookingsAPI.Web.ViewModels;
 
 namespace ITechArt.FlightBookingsAPI.Web.MappingConfigurations;
 
-public class UsersProfile : Profile
+public class FlightsProfile : Profile
 {
-    public UsersProfile()
+    public FlightsProfile()
     {
-        CreateMap<RegistrationViewModel, User>();
-        CreateMap<UserViewModel, User>();
-        CreateMap<User, UserViewModel>();
+        CreateMap<Flight, FlightViewModel>();
+        CreateMap<FlightViewModel, Flight>();
     }
 }
