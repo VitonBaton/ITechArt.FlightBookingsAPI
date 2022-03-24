@@ -10,9 +10,9 @@ public class Flight
     [Required]
     public DateTime EndTime { get; set; }
     [Required]
-    public string? DeparturePoint { get; set; }
+    public string DeparturePoint { get; set; } = null!;
     [Required]
-    public string? DestinationPoint { get; set; }
+    public string DestinationPoint { get; set; } = null!;
     public List<Ticket>? Tickets { get; set; }
     public List<FlightTicketType>? FlightTickets { get; set; }
     [Required]

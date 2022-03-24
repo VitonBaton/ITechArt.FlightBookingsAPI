@@ -1,11 +1,15 @@
-﻿namespace ITechArt.FlightBookingsAPI.Web.ViewModels;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ITechArt.FlightBookingsAPI.Web.ViewModels;
 
 public class FlightViewModel
 {
     public Guid Id { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndTime { get; set; }
-    public string DeparturePoint { get; set; } = string.Empty;
-    public string DestinationPoint { get; set; } = string.Empty;
+    [Required]
+    public string DeparturePoint { get; set; } = null!;
+    [Required]
+    public string DestinationPoint { get; set; } = null!;
     public DateTime CreatedAt { get; set; }
 }
