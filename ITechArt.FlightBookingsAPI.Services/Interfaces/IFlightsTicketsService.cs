@@ -8,4 +8,5 @@ public interface IFlightsTicketsService
     public Task AddAsync(FlightTicketType ftt);
     public Task UpdateAsync(FlightTicketType ftt);
     public Task DeleteAsync(Guid id);
+    public Task<IEnumerable<TicketType>> GetAllTicketTypesAsync();
 }

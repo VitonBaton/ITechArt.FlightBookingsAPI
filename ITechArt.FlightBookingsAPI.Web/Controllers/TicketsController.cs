@@ -25,6 +25,15 @@ public class TicketsController : Controller
     }
 
     [HttpGet]
+    [Route("types")]
+    [Authorize(Roles = IdentityRoles.UserRole+"," + IdentityRoles.AdminRole)]
+    public async Task<ActionResult<IEnumerable<TicketTypeViewModel>>> GetAllTicketTypes()
+    {
+        var result = await _flightsTicketsService.GetAllTicketTypesAsync();
+        return Ok(_mapper.Map<IEnumerable<TicketTypeViewModel>>(result));
+    }
+    
+    [HttpGet]
     [Route("{id:guid}")]
     [Authorize(Roles = IdentityRoles.UserRole+"," + IdentityRoles.AdminRole)]
     public async Task<ActionResult<IEnumerable<FlightTicketTypeViewModel>>> GetAllFlightTickets(Guid id)

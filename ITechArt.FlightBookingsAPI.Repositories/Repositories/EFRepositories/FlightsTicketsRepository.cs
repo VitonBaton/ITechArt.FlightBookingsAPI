@@ -49,4 +49,9 @@ public class FlightsTicketsRepository : IFlightsTicketsRepository
         _dbContext.FlightTicketTypes.Remove(ftt);
         await _dbContext.SaveChangesAsync();
     }
+
+    public async Task<IEnumerable<TicketType>> GetAllTicketTypesAsync()
+    {
+        return await _dbContext.TicketTypes.ToListAsync();
+    }
 }

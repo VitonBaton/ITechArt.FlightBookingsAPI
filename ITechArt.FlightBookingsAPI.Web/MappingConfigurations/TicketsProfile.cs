@@ -9,6 +9,7 @@ public class TicketsProfile : Profile
     public TicketsProfile()
     {
         CreateMap<FlightTicketType, FlightTicketTypeViewModel>();
+        CreateMap<TicketType, TicketTypeViewModel>();
         CreateMap<FlightTicketTypeViewModel, FlightTicketType>();
     }
 }

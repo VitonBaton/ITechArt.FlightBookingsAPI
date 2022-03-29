@@ -39,4 +39,9 @@ public class FlightsTicketsService : IFlightsTicketsService
     {
         await _repository.DeleteAsync(id);
     }
+
+    public async Task<IEnumerable<TicketType>> GetAllTicketTypesAsync()
+    {
+        return await _repository.GetAllTicketTypesAsync();
+    }
 }
