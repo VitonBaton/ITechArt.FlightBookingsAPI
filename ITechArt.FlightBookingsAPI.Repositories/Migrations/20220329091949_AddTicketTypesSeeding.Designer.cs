@@ -4,6 +4,7 @@ using ITechArt.FlightBookingsAPI.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ITechArt.FlightBookingsAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(FlightBookingsContext))]
-    partial class FlightBookingsContextModelSnapshot : ModelSnapshot
+    [Migration("20220329091949_AddTicketTypesSeeding")]
+    partial class AddTicketTypesSeeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
