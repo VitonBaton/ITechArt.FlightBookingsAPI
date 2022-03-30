@@ -18,10 +18,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddAutoMapper(typeof(UsersProfile), typeof(FlightsProfile));
+builder.Services.AddAutoMapper(typeof(UsersProfile), typeof(FlightsProfile), typeof(TicketsProfile));
 builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddScoped<IFlightsService, FlightsService>();
+builder.Services.AddScoped<IFlightsTicketsService, FlightsTicketsService>();
 builder.Services.AddScoped<IFlightsRepository, FlightsRepository>();
+builder.Services.AddScoped<IFlightsTicketsRepository, FlightsTicketsRepository>();
 builder.Services.Configure<JwtSettingsModel>(builder.Configuration.GetSection("Jwt"));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

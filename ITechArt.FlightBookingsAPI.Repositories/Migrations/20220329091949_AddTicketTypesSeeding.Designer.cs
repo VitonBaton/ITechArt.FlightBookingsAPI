@@ -4,6 +4,7 @@ using ITechArt.FlightBookingsAPI.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ITechArt.FlightBookingsAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(FlightBookingsContext))]
-    partial class FlightBookingsContextModelSnapshot : ModelSnapshot
+    [Migration("20220329091949_AddTicketTypesSeeding")]
+    partial class AddTicketTypesSeeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,17 +128,17 @@ namespace ITechArt.FlightBookingsAPI.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("be6efb48-2df0-495d-bfc0-77040e66ab8d"),
+                            Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             TypeName = "Economy"
                         },
                         new
                         {
-                            Id = new Guid("2a223348-e2ae-4a9d-9670-c2de1b909d38"),
+                            Id = new Guid("00000000-0000-0000-0000-000000000002"),
                             TypeName = "Business"
                         },
                         new
                         {
-                            Id = new Guid("e5023336-e00d-4c2d-a095-3cf3d589d998"),
+                            Id = new Guid("00000000-0000-0000-0000-000000000003"),
                             TypeName = "Deluxe"
                         });
                 });
