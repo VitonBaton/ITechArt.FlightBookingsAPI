@@ -40,4 +40,10 @@ public class FlightsService : IFlightsService
     {
         await _repository.DeleteAsync(id);
     }
+
+    public async Task<IEnumerable<Flight>> GetAvailableFlightsAsync()
+    {
+        var all = await _repository.GetAllAsync();
+        return all.Where(f => f.StartDate > DateTime.Now);
+    }
 }
