@@ -18,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddAutoMapper(typeof(UsersProfile), typeof(FlightsProfile), typeof(TicketsProfile));
+builder.Services.AddAutoMapper(typeof(UsersProfile), typeof(FlightsProfile), typeof(FlightTicketsProfile));
 builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddScoped<IFlightsService, FlightsService>();
 builder.Services.AddScoped<IFlightsTicketsService, FlightsTicketsService>();

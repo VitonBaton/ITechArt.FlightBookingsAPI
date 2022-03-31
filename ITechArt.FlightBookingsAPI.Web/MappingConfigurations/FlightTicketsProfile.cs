@@ -4,9 +4,9 @@ using ITechArt.FlightBookingsAPI.Web.ViewModels;
 
 namespace ITechArt.FlightBookingsAPI.Web.MappingConfigurations;
 
-public class TicketsProfile : Profile
+public class FlightTicketsProfile : Profile
 {
-    public TicketsProfile()
+    public FlightTicketsProfile()
     {
         CreateMap<FlightTicketType, FlightTicketTypeViewModel>();
         CreateMap<TicketType, TicketTypeViewModel>();
