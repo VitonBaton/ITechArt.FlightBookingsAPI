@@ -8,7 +8,7 @@ public class TicketViewModel
     public Guid UserId { get; set; }
     public Guid FlightId { get; set; }
     [Required]
-    public string TicketTypeName { get; set; } = null!;
+    public Guid FlightTicketTypeId { get; set; }
     [Required]
     public DateTime CreatedAt { get; set; }
 }
