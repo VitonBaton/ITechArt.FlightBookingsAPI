@@ -5,7 +5,6 @@ namespace ITechArt.FlightBookingsAPI.Web.ViewModels;
 public class TicketViewModel
 {
     public Guid Id { get; set; }
-    public Guid UserId { get; set; }
     public Guid FlightId { get; set; }
     [Required]
     public Guid FlightTicketTypeId { get; set; }
