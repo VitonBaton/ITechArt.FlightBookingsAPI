@@ -1,4 +1,5 @@
 ﻿using ITechArt.FlightBookingsAPI.Domain.Models;
+using ITechArt.FlightBookingsAPI.Infrastructure.Constants;
 using ITechArt.FlightBookingsAPI.Infrastructure.Contexts;
 using ITechArt.FlightBookingsAPI.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -24,5 +25,38 @@ public class TicketsRepository : ITicketsRepository
             .ToList();
         
         return result;
+    }
+
+    public async Task<Ticket> GetByIdAsync(Guid ticketId)
+    {
+        var result = await _dbContext.Tickets
+            .AsNoTracking()
+            .FirstOrDefaultAsync(ticket => ticket.Id == ticketId);
+        
+        if (result is null)
+        {
+            throw new KeyNotFoundException(MessageConstants.TicketNotFoundError);
+        }
+
+        return result;
+    }
+
+    public async Task<Ticket> CreateAsync(Ticket ticket)
+    {
+        await _dbContext.Tickets.AddAsync(ticket);
+        await _dbContext.SaveChangesAsync();
+        return ticket;
+    }
+
+    public async Task UpdateAsync(Ticket ticket)
+    {
+        _dbContext.Update(ticket);
+        await _dbContext.SaveChangesAsync();
+    }
+
+    public async Task DeleteAsync(Guid ticketId)
+    {
+        _dbContext.Tickets.Remove(await GetByIdAsync(ticketId));
+        await _dbContext.SaveChangesAsync();
     }
 }
