@@ -8,8 +8,12 @@ public class TicketsProfile : Profile
 {
     public TicketsProfile()
     {
-        CreateMap<FlightTicketType, FlightTicketTypeViewModel>();
-        CreateMap<TicketType, TicketTypeViewModel>();
-        CreateMap<FlightTicketTypeViewModel, FlightTicketType>();
+        CreateMap<Ticket, TicketViewModel>();
+        CreateMap<TicketViewModel, Ticket>();
+        CreateMap<IGrouping<Guid, Ticket>, TicketsWithSummaryViewModel>()
+            .ForMember(model => model.FlightId,
+                expression => expression.MapFrom(tickets => tickets.Key))
+            .ForMember(model => model.Tickets,
+                expression => expression.MapFrom(tickets => tickets));
     }
 }

@@ -9,4 +9,5 @@ public interface IFlightsService
     public Task<Flight> CreateAsync(Flight flight);
     public Task UpdateAsync(Flight flight);
     public Task DeleteAsync(Guid id);
+    public Task<IEnumerable<Flight>> GetAvailableFlightsAsync();
 }

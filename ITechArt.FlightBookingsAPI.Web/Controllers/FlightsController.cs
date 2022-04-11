@@ -67,4 +67,13 @@ public class FlightsController : Controller
         await _flightsService.DeleteAsync(id);
         return Ok(MessageConstants.FlightDeleted);
     }
+
+    [HttpGet]
+    [Route("available")]
+    [Authorize]
+    public async Task<ActionResult<IEnumerable<FlightViewModel>>> GetAvailableFlights()
+    {
+        var result = await _flightsService.GetAvailableFlightsAsync();
+        return Ok(_mapper.Map<IEnumerable<FlightViewModel>>(result));
+    }
 }
